@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const FNavBar = (props:any) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -7,14 +8,16 @@ const FNavBar = (props:any) => {
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <div>
+    <div> 
       <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
+        <NavItem>
+          <Link to='/'>Dr. Frankenstein ERS</Link>
+        </NavItem>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <Link to='/login'>Login</Link>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
