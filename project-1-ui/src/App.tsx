@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import FNavBar from './components/nav-bar/NavBar';
 import { FLoginComponent } from './components/login-component/LoginComponent';
-import { UserComponent } from './components/user-component/UserComponent';
+import { UserDisplayComponent } from './components/user-component/UserDisplayComponent';
 
 const App: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const App: React.FC = () => {
           <Route path='/login' component={FLoginComponent}></Route>
         </Switch>
         <Switch>
-          <Route path='/users' component={UserComponent}></Route>
+          <Route path='/users' component={UserDisplayComponent}></Route>
         </Switch>
       </BrowserRouter>
       

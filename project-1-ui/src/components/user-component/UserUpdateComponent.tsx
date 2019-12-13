@@ -1,38 +1,24 @@
 import React from 'react'
-import { Form, FormGroup, Label, Input, Col, Button } from 'reactstrap'
-import { fLogin } from '../../remote/frankenstein-client/FrankensteinClientUser'
+import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap'
 
-export class UserComponent extends React.Component<any, any>{
-    constructor(props: any) {
-        super(props)
-        this.state = {
-            user: {}
-        }
-    }
-
-    async componentDidMount() {
-        let user = await fLogin('inga', 'password')
-        this.setState({
-            ...this.state,
-            user
-        })
-    }
+export class UserUpdateComponent extends React.Component<any, any>{
+    
 
     render() {
         return (
             <div>
                 <Form>
                 <FormGroup row>
-                        <Label for="exampleSelect" sm={2}>Select</Label>
+                        <Label id='lblUserSelect' for="userSelect" sm={2}>Select User</Label>
                         <Col sm={10}>
-                            <Input type="select" name="select" id="exampleSelect" />
+                            <Input type="select" name="select" id="txtUserSelect" />
                         </Col>
                     </FormGroup>
 
                     <FormGroup row>
-                        <Label for="exampleEmail" sm={2}>Email</Label>
+                        <Label id='lblEmail' for="exampleEmail" sm={2}>Email</Label>
                         <Col sm={10}>
-                            <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                            <Input type="email" name="email" id="txtEmail" placeholder="you@here.com" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -43,7 +29,7 @@ export class UserComponent extends React.Component<any, any>{
                     </FormGroup>
                     
                     <FormGroup check row>
-                        <Col sm={{ size: 10, offset: 2 }}>
+                        <Col sm={{ size: 10, offset: 1 }}>
                             <Button>Submit</Button>
                         </Col>
                     </FormGroup>
