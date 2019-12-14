@@ -1,9 +1,14 @@
 import React, { SyntheticEvent } from 'react'
 
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
-import { fLogin } from '../../remote/frankenstein-client/FrankensteinClientUser'
+import { User } from '../../models/user'
 
-export class FLoginComponent extends React.Component<any, any>{
+interface ILoginComponentProps {
+    user: User
+    fLogin: (u: string, p: string) => void
+}
+
+export class FLoginComponent extends React.Component<ILoginComponentProps, any>{
     constructor(props: any) {
         super(props)
         this.state = {
@@ -28,11 +33,7 @@ export class FLoginComponent extends React.Component<any, any>{
 
     submitLogin = async (e: SyntheticEvent) => {
         e.preventDefault()
-        let user = await fLogin(this.state.username, this.state.password)
-        this.setState({
-            ...this.state,
-            user
-        })
+        this.props.fLogin(this.state.username, this.state.password)
     }
 
     render() {
@@ -49,6 +50,7 @@ export class FLoginComponent extends React.Component<any, any>{
                     </FormGroup>
                     <Button color='primary'>Submit</Button>
                 </Form>
+                <p>{this.props.user.username}</p>
             </div>
         )
     }
