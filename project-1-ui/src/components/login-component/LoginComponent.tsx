@@ -49,7 +49,7 @@ export class FLoginComponent extends React.Component<ILoginComponentProps, any>{
                     </FormGroup>
                     <Button color='primary'>Submit</Button>
                 </Form>
-                <p>Welcome back {this.props.user.username}</p>
+                <p>{this.props.user.username}</p>
             </div>
         )
     }

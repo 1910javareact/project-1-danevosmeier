@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const FNavBar = (props:any) => {
@@ -20,7 +20,7 @@ const FNavBar = (props:any) => {
               <Link to='/login'>Login</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <Link to='/users/display'>Users</Link>
             </NavItem>
           </Nav>
         </Collapse>
