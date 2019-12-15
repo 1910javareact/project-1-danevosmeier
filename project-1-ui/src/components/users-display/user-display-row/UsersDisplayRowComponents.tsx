@@ -1,14 +1,18 @@
 import React from 'react'
 import { User } from '../../../models/user';
 
-interface IUsersDisplayRowProps{
-    user:User
+interface IUsersDisplayRowProps {
+    user: User
 }
 
-export const UsersDiplayRowComponent: React.FC<IUsersDisplayRowProps> = (props) =>{
-    return(
+export const UsersDiplayRowComponent: React.FC<IUsersDisplayRowProps> = (props) => {
+    return (
         <tr>
-            <td>{props.user.userId}</td>
+            <td>{props.user.username}</td>
+            <td>{props.user.firstName}</td>
+            <td>{props.user.lastName}</td>
+            <td>{props.user.email}</td>
+            <td>{props.user.role}</td>
         </tr>
     )
 }

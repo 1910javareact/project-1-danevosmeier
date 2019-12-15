@@ -1,5 +1,4 @@
 import React, { SyntheticEvent } from 'react'
-
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import { User } from '../../models/user'
 
@@ -39,18 +38,18 @@ export class FLoginComponent extends React.Component<ILoginComponentProps, any>{
     render() {
         return (
             <div>
-                <Form inline>
+                <Form inline onSubmit={this.submitLogin}>
                     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                        <Label for="lblUsername">Username</Label>
-                        <Input value={this.state.username} onChange={this.updateUsername} type="text" name="username" id="txtUsername" />
+                        <Label for="exampleUsername">Username</Label>
+                        <Input value={this.state.username} onChange={this.updateUsername} type="text" name="username" id="exampleUsername" />
                     </FormGroup>
                     <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                        <Label for="lblPassword">Password</Label>
-                        <Input value={this.state.password} onChange={this.updatePassword} type="password" name="password" id="txtPassword" />
+                        <Label for="examplePassword">Password</Label>
+                        <Input value={this.state.password} onChange={this.updatePassword} type="password" name="password" id="examplePassword" />
                     </FormGroup>
                     <Button color='primary'>Submit</Button>
                 </Form>
-                <p>{this.props.user.username}</p>
+                <p>Welcome back {this.props.user.username}</p>
             </div>
         )
     }
