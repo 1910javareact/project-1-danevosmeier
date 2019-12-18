@@ -1,5 +1,6 @@
 import { User } from "../../models/user";
 import React from 'react'
+import { Role } from "../../models/role";
 
 
 interface IUserLoginStateState{
@@ -10,7 +11,7 @@ export class UserLoginStateComponent extends React.Component<any, IUserLoginStat
     constructor(props:any){
         super(props)
         this.state = {
-            user: new User(0,'','','','','',[])
+            user: new User(0,'','','','','',new Role(0,''))
         }
     }
 
