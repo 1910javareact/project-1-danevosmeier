@@ -19,7 +19,7 @@ interface IUsersDisplayState {
     firstName:any
     lastName:any
     email:any
-    success:string
+    successful:string
 }
 
 export class UsersDisplayComponent extends React.Component<IUsersDisplayProps, IUsersDisplayState>{
@@ -33,7 +33,7 @@ export class UsersDisplayComponent extends React.Component<IUsersDisplayProps, I
             firstName:'',
             lastName:'',
             email:'',
-            success:''
+            successful:''
         }
     }
 
