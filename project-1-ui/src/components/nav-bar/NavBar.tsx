@@ -22,6 +22,9 @@ const FNavBar = (props:any) => {
             <NavItem>
               <Link to='/users/display'>Users</Link>
             </NavItem>
+            <NavItem>
+              <Link to='/reimbursements'>Reimbursements</Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
