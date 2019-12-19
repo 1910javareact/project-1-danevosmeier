@@ -6,6 +6,8 @@ import FLoginComponent from './components/login-component/Login-Container';
 import { Provider } from 'react-redux'
 import { store } from './Store';
 import UserDisplayComponent from './components/users-display/UsersDisplayContainer'
+import ReimbursementDisplayComponent from './components/reimbursement-display/ReimbursementDisplayContainer'
+
 
 const App: React.FC = () => {
   return (
@@ -19,6 +21,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path='/login' component={FLoginComponent}></Route>
             <Route path='/users/display' component={UserDisplayComponent}></Route>
+            <Route path='/reimbursements' component={ReimbursementDisplayComponent}></Route>
           </Switch>
         </BrowserRouter>
       </Provider>

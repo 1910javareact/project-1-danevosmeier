@@ -1,7 +1,7 @@
 import { IState } from "../../reducers";
 import {reimbursementUpdate} from '../../action-mappers/reimbursement-action-mapper'
 import { connect } from "react-redux";
-import { ReimbursementDisplay } from "./ReimbursementComponent";
+import { ReimbursementDisplay } from "./ReimbursementDisplayComponent";
 
 
 
