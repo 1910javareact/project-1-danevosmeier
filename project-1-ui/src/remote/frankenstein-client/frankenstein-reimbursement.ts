@@ -35,3 +35,26 @@ export async function updateReimbursement(reimbursementId:number, author:number,
         throw new Error('Unable to update reimbursement')
     }
 }
+
+export async function findReimbursementByStatus(id:number){
+    try{
+        const response = await fClient.get('/reimbursement/status/' + id)
+
+        if(response.status === 200){
+            return{
+                status: response.status,
+                body: response.data
+            }
+        }
+        else{
+            return{
+                status: response.status,
+                body: undefined
+            }
+        }
+    }
+    catch(e){
+        console.log(e);
+        throw new Error('Unable to find reimbursement by that status id')
+    }
+}

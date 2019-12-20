@@ -12,7 +12,6 @@ export const UsersDiplayRowComponent: React.FC<IUsersDisplayRowProps> = (props) 
             <td>{props.user.firstName}</td>
             <td>{props.user.lastName}</td>
             <td>{props.user.email}</td>
-            <td>{props.user.role}</td>
         </tr>
     )
 }
