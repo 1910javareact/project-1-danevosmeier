@@ -28,7 +28,6 @@ export interface IReimbursementState{
     status:any,
     type: any,
     successful: string,
-    menu: boolean
 }
 
 export const state = combineReducers<IState>({

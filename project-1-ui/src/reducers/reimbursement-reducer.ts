@@ -18,7 +18,6 @@ const initialState:IReimbursementState = {
     status:null,
     type:null,
     successful:'',
-    menu:false
 }
 
 export const reimbursementReducer = (state = initialState, action:any) => {

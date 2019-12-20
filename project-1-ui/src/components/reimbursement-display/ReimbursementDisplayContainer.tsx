@@ -22,7 +22,6 @@ const mapStateToProps = (state: IState, ownProps:any) => {
         status: state.reimbursement.status,
         type: state.reimbursement.type,
         successful: state.reimbursement.successful,
-        menu: state.reimbursement.menu
     }
 }
 

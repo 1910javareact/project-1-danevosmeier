@@ -3,7 +3,7 @@ import { User } from "../../models/user";
 import { Reimbursement } from "../../models/reimbursement";
 import { Role } from '../../models/role';
 import { getUserById } from '../../remote/frankenstein-client/frankenstein-user';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Table } from 'reactstrap';
 import { ReimbursementDisplayRow } from './reimbursement-display-row/ReimbursementDisplayRow';
 
 
@@ -28,7 +28,6 @@ interface IReimbursementDisplayState {
     status: any
     type: any
     successful: string
-    menu: any
 }
 
 export class ReimbursementDisplay extends React.Component<IReimbursementDisplayProps, IReimbursementDisplayState>{
@@ -47,7 +46,6 @@ export class ReimbursementDisplay extends React.Component<IReimbursementDisplayP
             status: '',
             type: '',
             successful: '',
-            menu: false,
         }
     }
 
@@ -150,7 +148,7 @@ export class ReimbursementDisplay extends React.Component<IReimbursementDisplayP
     }
 
     render() {
-        let rows = this.state.allReimbursements.map((e) => {
+        let rows = this.state.allReimbursements.map((e: any) => {
             return <ReimbursementDisplayRow reimbursement={e} key={'Reimbursement' + e.reimbursement_id} />
         })
         return (
@@ -160,8 +158,54 @@ export class ReimbursementDisplay extends React.Component<IReimbursementDisplayP
                     <FormGroup>
                         <Label for="author">Make a new reimbursement</Label>
                     </FormGroup>
+                    <FormGroup>
+                        <Label for="author">Enter you userId</Label>
+                        <Input type="text" id="author" value={this.state.author} onChange={this.updateAuthor}></Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="amount">Enter the amount of the Reimbursement</Label>
+                        <Input type="text" id="amount" value={this.state.amount} onChange={this.updateAmount}></Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="dateSubmitted">Enter today's date</Label>
+                        <Input type="text" id="dateSubmitted" value={this.state.dateSubmitted} onChange={this.updateDateSubmitted}></Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="dateResolved">Enter the date it paid</Label>
+                        <Input type="text" id="author" value={this.state.dateResolved} onChange={this.updateDateResolved}></Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="description">Please describe your expense</Label>
+                        <Input type="text" id="discription" value={this.state.description} onChange={this.updateDescription}></Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="type">Please enter the type of reimbursement</Label>
+                        <Input type="text" id="type" value={this.state.type} onChange={this.updateType}></Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="status">Please enter the status of the reimbursement</Label>
+                        <Input type="text" id="status" value={this.state.status} onChange={this.updateStatus}></Input>
+                    </FormGroup>
                     <Button>Submit</Button>
                 </Form>
+
+                <Table>
+                    <thead>
+                        <tr>
+                            <td>Author</td>
+                            <td>Amount</td>
+                            <td>Date Submitted</td>
+                            <td>Date Resolved</td>
+                            <td>Description</td>
+                            <td>Resolver</td>
+                            <td>Status</td>
+                            <td>Type</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </Table>
             </div>
         )
     }

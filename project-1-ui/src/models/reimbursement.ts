@@ -1,26 +1,22 @@
-export class  Reimbursement{
-    reimbursement_id: number
-    author: number
-    amount: number
-    date_submitted: number
-    date_resolved: number
-    description: string
-    resolver: number
-    status: number
-    type: number
-
-    constructor(reimbursement_id:number, author:number, amount:number,
-                date_submitted:number, date_resolved:number, description:string,
-                resolver:number, status:number, type:number){
-        
-        this.reimbursement_id = reimbursement_id,
-        this.author = author,
-        this.amount = amount,
-        this.date_submitted = date_submitted,
-        this.date_resolved = date_resolved,
-        this.description = description,
-        this.resolver = resolver,
-        this.status = status,
-        this.type = type
+export class Reimbursement {
+    reimbursementId: number;
+    author: number;
+    amount: number;
+    dateSubmitted: number;
+    dateResolved: number;
+    description: string;
+    resolver: number;
+    status: number;
+    type: number;
+    constructor(reimbursementId: number, author: number, amount: number, dateSubmitted: number, dateResolved: number, description: string, resolver: number, status: number, type: number) {
+        this.reimbursementId = reimbursementId;
+        this.author = author;
+        this.amount = amount;
+        this.dateSubmitted = dateSubmitted;
+        this.dateResolved = dateResolved;
+        this.description = description;
+        this.resolver = resolver;
+        this.status = status;
+        this.type = type;
     }
 }
