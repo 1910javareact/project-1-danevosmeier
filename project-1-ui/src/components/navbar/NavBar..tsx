@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-const FNavBar = (props:any) => {
+ export const Pnavbar = (props:any) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <div> 
+    <div>
       <Navbar color="faded" light>
-        <NavItem>
-          <Link to='/'>Dr. Frankenstein ERS</Link>
-        </NavItem>
+        <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <Link to='/login'>Login</Link>
+              <NavLink href="/login/">login</NavLink>
             </NavItem>
             <NavItem>
-              <Link to='/users/display'>Users</Link>
+            
+               <Link to='/users/display'>users</Link> 
             </NavItem>
             <NavItem>
-              <Link to='/reimbursements'>Reimbursements</Link>
+               <Link to='/reimbursements/status/'>Reimbursements</Link> 
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
@@ -32,4 +34,4 @@ const FNavBar = (props:any) => {
   );
 }
 
-export default FNavBar;
+export default Pnavbar;

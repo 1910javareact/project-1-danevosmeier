@@ -1,60 +1,32 @@
-import { updateReimbursement, findReimbursementByStatus } from "../remote/frankenstein-client/frankenstein-reimbursement"
+import { getReimbursementByStatus } from "../remote/reimbursements-clients/reimbursements-by-status"
 
-
-export const reimbursementUpdateTypes = {
-    SUCCESSFUL_UPDATE: 'REIMBURSEMENT_UPDATE_SUCCESSFUL_UPDATE',
-    UNSUCCESSFUL_UPDATE: 'REIMBURSEMENT_UPDATE_FAILED_UPDATE'
+export const ReimbTypes = {
+    INVALID_CREDENTIALS: 'TOKEN_HAS_EXPIRED',
+    SUCCESSFUL_REIMBURSEMENT: 'REIMBURSEMENT_FOUND',
+    UNSUCCESSFUL_FAILED: 'REIMBURSEMENT_NOT_FOUND'
 }
+export const reimbursementID = (id:number) => async (dispatch:any) => {
 
-export const reimbursementFindTypes = {
-    FOUND: 'REIMBURSEMENT_FOUND_SUCCESFUL',
-    UNFOUND: 'REIMBURSEMENT_FOUND_UNSUCCESSFULLY'
-}
-
-export const reimbursementUpdate = (id:number, author:number, amount:number, dateSubmitted:number, dateResolved:number, description:string, resolver:number, status:number, type:number) => async(dispatch:any) =>{
     try{
-        let res = await updateReimbursement(id, author, amount, dateSubmitted, dateResolved, description, resolver, status, type)
-        if(res.status === 201){
-            dispatch({
-                type: reimbursementUpdateTypes.SUCCESSFUL_UPDATE,
-                payload:{
-                    user: res.body
-                }
-            })
-        }
-        else{
-            dispatch({
-                type: reimbursementUpdateTypes.UNSUCCESSFUL_UPDATE
-            })
-        }
-    }
-    catch(e){
-        dispatch({
-            type: reimbursementUpdateTypes.UNSUCCESSFUL_UPDATE
-        })
-    }
-}
-
-export const reimbursementFindByStatus = (status:number) => async (dispatch:any) =>{
-    try{
-        let res = await findReimbursementByStatus(status)
+        let res = await getReimbursementByStatus(id)
+        //a successful login
         if(res.status === 200){
+            //this is how do it when we have async operations
             dispatch({
-                type: reimbursementFindTypes.FOUND,
+                type:ReimbTypes.SUCCESSFUL_REIMBURSEMENT,
                 payload:{
-                    user: res.body
+                    reimbursements: res.body
                 }
             })
-        }
-        else{
+        }else{
             dispatch({
-                type: reimbursementFindTypes.UNFOUND
+                type:ReimbTypes.INVALID_CREDENTIALS
             })
         }
-    }
-    catch(e){
+    }catch(e){
         dispatch({
-            type: reimbursementFindTypes.UNFOUND
+            type:ReimbTypes.UNSUCCESSFUL_FAILED
         })
     }
+    
 }

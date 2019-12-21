@@ -1,36 +1,37 @@
 import { User } from "../models/user";
-import {combineReducers} from "redux"
+import { combineReducers } from "redux";
 import { loginReducer } from "./login-reducer";
 import { Reimbursement } from "../models/reimbursement";
 import { reimbursementReducer } from "./reimbursement-reducer";
+import { userByIdReducer } from "./user-by-id-reducer";
+
+export interface IState{
+    login:ILoginState,
+    reim: IReimbursement,
+    userId: IUserById,
+
+}
 
 
-
-export interface ILoginState{
+export interface IUserById{
     user:User
 }
 
-export interface IState{
-    login:ILoginState
-    reimbursement: IReimbursementState
+export interface ILoginState {
+    user:User
 }
 
-export interface IReimbursementState{
-    reimbursement: Reimbursement,
-    allReimbursement:[],
-    userById: User,
-    id: any,
-    amount: any,
-    dateSubmitted:any,
-    dateResolved:any,
-    description:any,
-    resolver:any,
-    status:any,
-    type: any,
-    successful: string,
+export interface IReimbursement{
+    reimbursement:Reimbursement[]
 }
+
+export interface IReimbursementId{
+    reimbursementId: Reimbursement
+}
+
 
 export const state = combineReducers<IState>({
     login:loginReducer,
-    reimbursement: reimbursementReducer
+    reim: reimbursementReducer,
+    userId: userByIdReducer,
 })

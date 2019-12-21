@@ -1,30 +1,33 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import FNavBar from './components/nav-bar/NavBar';
-import FLoginComponent from './components/login-component/Login-Container';
-import { Provider } from 'react-redux'
+import { Pnavbar } from './components/navbar/NavBar.'
+import { Home } from './home/Home';
+import LoginComponent  from './components/login-component/LoginContainer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import UsersDisplayComponent from './components/all-users-component/UsersDisplayContainer'
+import { Provider } from 'react-redux';
 import { store } from './Store';
-import UserDisplayComponent from './components/users-display/UsersDisplayContainer'
-import ReimbursementDisplayComponent from './components/reimbursement-display/ReimbursementDisplayContainer'
+import ReimbursementsByStatusDisplayComponent  from './components/reimbursements-by-status-component/ReimbursementByStatusDisplayContainer';
 
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <BrowserRouter>
-          <nav>
-            <FNavBar />
-          </nav>
-
-          <Switch>
-            <Route path='/login' component={FLoginComponent}></Route>
-            <Route path='/users/display' component={UserDisplayComponent}></Route>
-            <Route path='/reimbursements' component={ReimbursementDisplayComponent}></Route>
-          </Switch>
-        </BrowserRouter>
-      </Provider>
+      <Router>
+     <Pnavbar/>
+     <Switch>
+     <Route path='/login' component={LoginComponent}/>
+   
+     
+              <Route path='/users/' component={UsersDisplayComponent} />
+              <Route path='/reimbursements/status/' component={ReimbursementsByStatusDisplayComponent} />
+              <Route path='/'>
+               
+              </Route>
+     </Switch>  
+     </Router>
+     </Provider>
     </div>
   );
 }

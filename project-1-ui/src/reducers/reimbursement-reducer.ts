@@ -1,34 +1,28 @@
-import { IReimbursementState, state } from ".";
-import { Reimbursement } from "../models/reimbursement";
-import { User } from "../models/user";
-import { Role } from "../models/role";
-import { reimbursementFindTypes } from "../action-mappers/reimbursement-action-mapper";
+import { IReimbursement } from "."
+import { Reimbursement } from "../models/reimbursement"
+import { ReimbTypes } from "../action-mappers/reimbursement-action-mapper"
 
-
-const initialState:IReimbursementState = {
-    reimbursement: new Reimbursement(0,0,0,0,0,'',0,0,0),
-    allReimbursement: [],
-    userById: new User(0,'','','','','', new Role(0,'')),
-    id:null,
-    amount:null,
-    dateSubmitted:null,
-    dateResolved:null,
-    description:null,
-    resolver:null,
-    status:null,
-    type:null,
-    successful:'',
+const initialStater: IReimbursement = {
+   reimbursement: [new Reimbursement(0, 0, 0, 0, 0, '', 0, 0, 0)]
 }
 
-export const reimbursementReducer = (state = initialState, action:any) => {
-    switch(action.type){
-        case reimbursementFindTypes.FOUND:{
-            return{
+
+//whatever this reducer returns, becomes the total state of the store
+//do not forget to spread state
+export const reimbursementReducer = (state = initialStater, action:any) => {
+    
+    switch (action.type) {
+        case ReimbTypes.SUCCESSFUL_REIMBURSEMENT:{
+            //we return the new total state
+            //dont forget to spread
+            return {
                 ...state,
-                allReimbursement: action.payload.user
+                reimbursement:action.payload.reimbursement,
+               // reimbursement:state.reimbursement
             }
         }
         default:
             return state
     }
+
 }
