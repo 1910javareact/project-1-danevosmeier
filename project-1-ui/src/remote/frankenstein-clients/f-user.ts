@@ -1,5 +1,4 @@
 import { fUserClient } from "./f-user-client";
-import { Role } from "../../models/role";
 
 export async function fRemoteLogin(username: string, password: string) {
     const credentails = {
@@ -65,7 +64,7 @@ export const getUserById = async (userId: number) => {
     }
 }
 
-export async function updateUser(userId: number, username: string, password: string, firstName: string, lastName: string, email: string, role: Role) {
+export async function updateUser(userId: number, username: string, password: string, firstName: string, lastName: string, email: string) {
     const updateFields = {
         userId,
         username,
@@ -73,7 +72,6 @@ export async function updateUser(userId: number, username: string, password: str
         firstName,
         lastName,
         email,
-        role
     }
     try {
         let response = await fUserClient.patch('/users', updateFields)

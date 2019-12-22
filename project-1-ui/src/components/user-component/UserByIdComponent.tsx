@@ -30,13 +30,15 @@ export class UserByIdComponent extends React.Component<IUserByIdComponentProps, 
             <div>
                 <Form onSubmit={this.submitUserId} className='{classes.form}' noValidate>
                     <FormGroup>
-                        <Label for="userId">User ID</Label>
+                        <Label for="userId"><h2>User ID</h2></Label>
                         <Input type="text" name="userId" id="userId" value={this.state.userId} onChange={this.updateId} autoFocus />
                     </FormGroup>
-                    <Button type="submit" variant="contained" color="primary" className='{classes.submit}'>
+                    <Button type="submit" variant="contained" color="primary" >
                         Get User
                     </Button>
                 </Form>
+
+                <br/>
 
                 <Table hover>
                     <thead>

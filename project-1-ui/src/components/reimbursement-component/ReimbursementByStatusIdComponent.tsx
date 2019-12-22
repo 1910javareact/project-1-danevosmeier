@@ -32,19 +32,22 @@ export class ReimbursementByStatusIdComponent extends React.Component<IReimburse
         })
         return (
             <div>
+                
                 <Form onSubmit={this.submitStatusId} className='{classes.form}' noValidate>
 
                     <FormGroup>
-                        <Label for="statusId">Status ID</Label>
+                        <Label for="statusId"><h4>Status ID</h4></Label>
                         <Input type="text" name="statusId" id="statusId" value={this.state.statusId} onChange={this.updateStatusId} autoFocus />
                     </FormGroup>
 
+                    <br/>
 
-                    <Button type="submit"  variant="contained" color="primary" className='{classes.submit}'>
+                    <Button type="submit"  variant="contained" color="primary">
                         Find Reimbursement
                     </Button>
                 </Form>
 
+                <br/>
                 <Table>
                     <thead>
                         <tr>
@@ -54,6 +57,7 @@ export class ReimbursementByStatusIdComponent extends React.Component<IReimburse
                             <th>Date Submitted</th>
                             <th>Date Resolved</th>
                             <th>Description</th>
+                            <th>Resolver</th>
                             <th>Status</th>
                             <th>Type</th>
                         </tr>

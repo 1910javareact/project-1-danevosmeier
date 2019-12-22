@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-const FNavBar = (props:any) => {
+const FNavBar = (props: any) => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <div> 
+    <div>
       <Navbar color="faded" light>
         <NavItem>
           <Link to='/'>Dr. Frankenstein ERS</Link>
@@ -19,21 +19,35 @@ const FNavBar = (props:any) => {
             <NavItem>
               <Link to='/login'>Login</Link>
             </NavItem>
+            
             <NavItem>
-              <Link to='/users'>Users</Link>
+              <Link to='/users'>All Users</Link>
             </NavItem>
+
             <NavItem>
               <Link to='/usersbyid'>Users By Id</Link>
             </NavItem>
+            
             <NavItem>
-              <Link to='/updateuser'>User Update</Link>
+              <Link to='/usersupdate'>Update User</Link>
             </NavItem>
+
             <NavItem>
               <Link to='/reimbursement/user'>Reimbursements By User</Link>
             </NavItem>
+
             <NavItem>
               <Link to='/reimbursement/status'>Reimbursements By Status</Link>
             </NavItem>
+
+            <NavItem>
+              <Link to='/reimbursement/update'>Update Reimbursement</Link>
+            </NavItem>
+
+            <NavItem>
+              <Link to='/reimbursement/new'>New Reimbursement</Link>
+            </NavItem>
+
           </Nav>
         </Collapse>
       </Navbar>

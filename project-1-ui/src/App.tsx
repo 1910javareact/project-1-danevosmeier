@@ -5,13 +5,14 @@ import FNavBar from './components/nav-bar/NavBar'
 import LoginComponent from './components/login-component/LoginContainer';
 import { Provider } from 'react-redux';
 import { store } from './Store';
-import UserComponent from './components/user-component/UserContainer';
-import ReimbursementInfoComponent from './components/reimbursement-component/ReimbursementInfoContainer';
 import AllUsersComponent from './components/user-component/AllUsersContainer';
 import UserByIdComponent from './components/user-component/UserByIdContainer';
 import ReimbursementByStatusIdComponent from './components/reimbursement-component/ReimbursementByStatusIdContainer';
 import ReimbursementByUserIdComponent from './components/reimbursement-component/ReimbursementByUserIdContainer';
 import { UpdateUserComponent } from './components/user-component/UpdateUserComponent';
+import {ReimbursementUpdateComponent} from './components/reimbursement-component/ReimbursementUpdateComponent'
+import {NewReimbursementComponent} from './components/reimbursement-component/NewReimbursementComponent'
+
 
 const App: React.FC = () => {
   return (
@@ -22,13 +23,13 @@ const App: React.FC = () => {
             <FNavBar />
           </nav>
           <Switch>
-            <Route path='/users' component={AllUsersComponent} />
-            <Route path='/user' component={UserComponent} />
             <Route path='/usersbyid' component={UserByIdComponent} />
-            <Route path='updateuser' component={UpdateUserComponent} />
+            <Route path='/usersupdate' component={UpdateUserComponent} />
+            <Route path='/users' component={AllUsersComponent} />
+            <Route path='/reimbursement/update' component={ReimbursementUpdateComponent} />
             <Route path='/reimbursement/status' component={ReimbursementByStatusIdComponent} />
             <Route path='/reimbursement/user' component={ReimbursementByUserIdComponent} />
-            <Route path='/reimbursement' component={ReimbursementInfoComponent} />
+            <Route path='/reimbursement/new' component={NewReimbursementComponent} />
             <Route path='/login' component={LoginComponent} />
             <Route path='/'>
               <LoginComponent />

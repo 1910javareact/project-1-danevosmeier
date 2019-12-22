@@ -1,77 +1,73 @@
 import React, { SyntheticEvent } from 'react'
 import { updateUser } from '../../remote/frankenstein-clients/f-user'
-import { Role } from '../../models/role'
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap'
 
 export class UpdateUserComponent extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = {
-            updated: false,
             userId: 0,
             username: '',
             password: '',
             firstname: '',
             lastname: '',
             email: '',
-            role: new Role(3, 'User')
         }
     }
+
     updateUserId = (e: any) => {
         this.setState({
             ...this.state,
             userId: e.target.value
         })
     }
+
     updateUsername = (e: any) => {
         this.setState({
             ...this.state,
             username: e.target.value
         })
     }
+
     updatePassword = (e: any) => {
         this.setState({
             ...this.state,
             password: e.target.value
         })
     }
+
     updateFirstname = (e: any) => {
         this.setState({
             ...this.state,
             firstname: e.target.value
         })
     }
+
     updateLastname = (e: any) => {
         this.setState({
             ...this.state,
             lastname: e.target.value
         })
     }
+
     updateEmail = (e: any) => {
         this.setState({
             ...this.state,
             email: e.target.value
         })
     }
-    updateRole = (e: any) => {
-        this.setState({
-            ...this.state,
-            role: new Role(e.target.value, '')
-        })
-    }
+
     submitUpdate = async (e: SyntheticEvent) => {
         e.preventDefault()
         try {
-            let u = await updateUser(this.state.userId, this.state.username, this.state.password, this.state.firstname, this.state.lastname, this.state.email, this.state.role)
+            let u = await updateUser(this.state.userId, this.state.username, this.state.password, this.state.firstname, this.state.lastname, this.state.email)
             if (u.status === 200) {
                 this.setState({
                     ...this.state,
-                    updated: true
                 })
             } else {
                 this.setState({
                     ...this.state,
-                    updated: false
                 })
             }
         } catch (e) {
@@ -80,13 +76,10 @@ export class UpdateUserComponent extends React.Component<any, any> {
     }
 
     render() {
-        let updateMessage = () => {
-            if (this.state.updated) {
-                return <p>User Updated</p>
-            }
-        }
         return (
             <div>
+                <h2>Update User</h2>
+                <br/>
                 <Form onSubmit={this.submitUpdate} className="updateComponent">
                     <FormGroup>
                         <Label for="userId">User ID</Label>
@@ -112,17 +105,12 @@ export class UpdateUserComponent extends React.Component<any, any> {
                         <Label for="email">Email</Label>
                         <Input type="email" name="email" id="email" value={this.state.email} onChange={this.updateEmail} />
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="role">Roles</Label>
-                        <Input type="text" name="role" id="role" value={this.state.role.roleId} onChange={this.updateRole} />
-                    </FormGroup>
                     <br />
-                    <Button type="submit"  variant="contained" color="primary" className='{classes.submit}' >
+                    <Button type="submit"  variant="contained" color="primary" >
                         Update
                     </Button>
                 </Form>
                 <br />
-                {updateMessage()}
             </div>
         )
     }

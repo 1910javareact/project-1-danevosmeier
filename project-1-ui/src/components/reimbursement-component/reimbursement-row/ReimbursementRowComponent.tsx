@@ -14,6 +14,7 @@ export const ReimbursementRowComponent: React.FC<IReimbursementRowProps> = (prop
             <td>{props.reimbursement.dateSubmitted}</td>
             <td>{props.reimbursement.dateResolved}</td>
             <td>{props.reimbursement.description}</td>
+            <td>{props.reimbursement.resolver}</td>
             <td>{props.reimbursement.status}</td>
             <td>{props.reimbursement.type}</td>
         </tr>

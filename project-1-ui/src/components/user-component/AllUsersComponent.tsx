@@ -37,6 +37,8 @@ export class AllUsersComponent extends React.Component<any, IAllUsersState>{
         })
         return (
             <div>
+                <h2>All Users List</h2>
+                <br/>
                 <Table hover>
                     <thead>
                         <tr>
