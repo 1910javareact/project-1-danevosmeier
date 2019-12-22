@@ -1,20 +1,18 @@
-import { IUserById, state } from ".";
+import { IUserState } from ".";
 import { User } from "../models/user";
-import { UserByIdTypes } from "../action-mappers/user-by-id-action-mapper";
+import { Role } from "../models/role";
+import { fUserByIdType } from "../action-mappers/user-by-id-action-mapper";
 
-
-
-const initialStarter: IUserById = {
-    user: new User(0,'','','','','', [])
+const initialState: IUserState = {
+    user: new User(0, '', '', '', '', '', new Role(0, ''))
 }
 
-export const userByIdReducer = (state = initialStarter, action: any) =>{
-
-    switch(action.type){
-        case UserByIdTypes.SUCCESSFUL_USER_FOUND:{
-            return{
+export const userByIdReducer = (state = initialState, action: any) => {
+    switch (action.type) {
+        case fUserByIdType.USER_BY_ID_SUCCESSFUL: {
+            return {
                 ...state,
-                reimbursement: action.payload.user
+                user: action.payload.user
             }
         }
         default:

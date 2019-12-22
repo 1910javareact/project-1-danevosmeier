@@ -1,33 +1,29 @@
-import { getUserById } from "../remote/reimbursements-clients/user-by-id"
+import { getUserById } from "../remote/frankenstein-clients/f-user"
 
-
-export const UserByIdTypes = {
-    INVALID_CREDENTIALS: 'TOKEN_HAS_EXPIRED',
-    SUCCESSFUL_USER_FOUND: 'USER_FOUND',
-    UNSUCCESSFUL_FAILED: 'USER_NOT_FOUND'
+export const fUserByIdType = {
+    USER_BY_ID_SUCCESSFUL: 'USER_BY_ID_SUCCESSFUL',
+    FAILED_USER_BY_ID: 'FAILED_USER_BY_ID'
 }
 
-export const userById = (id: number) => async (dispatch: any) => {
+export const fUserById = (userId: number) => async (dispatch: any) => {
     try {
-        let res = await getUserById(id)
-
+        let res = await getUserById(userId)
         if (res.status === 200) {
             dispatch({
-                type: UserByIdTypes.SUCCESSFUL_USER_FOUND,
+                type: fUserByIdType.USER_BY_ID_SUCCESSFUL,
                 payload: {
                     user: res.body
                 }
             })
-        }
-        else {
+        } else {
             dispatch({
-                type: UserByIdTypes.INVALID_CREDENTIALS
+                type: fUserByIdType.FAILED_USER_BY_ID
             })
         }
-    }
-    catch (e) {
+
+    } catch (e) {
         dispatch({
-            type: UserByIdTypes.UNSUCCESSFUL_FAILED
+            type: fUserByIdType.FAILED_USER_BY_ID
         })
     }
 }

@@ -1,36 +1,30 @@
-import { reimbursementLogin } from "../remote/reimbursements-clients/reimbursements-user"
+import { fRemoteLogin } from "../remote/frankenstein-clients/f-user"
 
-
-
-
-
-export const userLginTypes = {
-    INVALID_CREDENTIALS: 'USER_LOGIN_INVALID_CREDENTIALS',
-    SUCCESSFUL_LOGIN: 'USER_LOGIN_SUCCESSFUL_LOGIN',
-    UNSUCCESSFUL_LOGIN: 'USER_LOGIN_FAILED_LOGIN'
+export const fLoginType = {
+    INVALID_CREDENTIALS: 'LOGIN_INVALID_CREDENTIALS',
+    SUCCESSFUL_LOGIN: 'LOGIN_SUCCESSFUL_LOGIN',
+    UNSUCCESSFUL_LOGIN: 'LOGIN_FAILED_LOGIN'
 }
-export const userLogin = (username:string, password:string) => async (dispatch:any) => {
 
-    try{
-        let res = await reimbursementLogin(username, password)
-        //a successful login
-        if(res.status === 200){
-            //this is how do it when we have async operations
+export const fLogin = (username: string, password: string) => async (dispatch: any) => {
+    try {
+        let res = await fRemoteLogin(username, password)
+        // Succesful login
+        if (res.status === 200) {
             dispatch({
-                type:userLginTypes.SUCCESSFUL_LOGIN,
-                payload:{
-                    user:res.body
+                type: fLoginType.SUCCESSFUL_LOGIN,
+                payload: {
+                    user: res.body
                 }
             })
-        }else{
+        } else {
             dispatch({
-                type:userLginTypes.INVALID_CREDENTIALS
+                type: fLoginType.INVALID_CREDENTIALS
             })
         }
-    }catch(e){
+    } catch (e) {
         dispatch({
-            type:userLginTypes.UNSUCCESSFUL_LOGIN
+            type: fLoginType.UNSUCCESSFUL_LOGIN
         })
     }
-    
 }
