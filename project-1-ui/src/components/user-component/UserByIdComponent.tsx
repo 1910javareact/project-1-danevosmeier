@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from 'react'
 import { User } from '../../models/user'
-import { FormGroup, Label, Input, Form, Button } from 'reactstrap'
+import { FormGroup, Label, Input, Form, Button, Table } from 'reactstrap'
 
 interface IUserByIdComponentProps {
     user: User
@@ -28,21 +28,37 @@ export class UserByIdComponent extends React.Component<IUserByIdComponentProps, 
     render() {
         return (
             <div>
-                <p>UserID: {this.props.user.userId}</p>
-                <p>Username: {this.props.user.username}</p>
-                <p>First name: {this.props.user.firstName}</p>
-                <p>Last name: {this.props.user.lastName}</p>
-                <p>Email: {this.props.user.email}</p>
-
                 <Form onSubmit={this.submitUserId} className='{classes.form}' noValidate>
                     <FormGroup>
                         <Label for="userId">User ID</Label>
                         <Input type="text" name="userId" id="userId" value={this.state.userId} onChange={this.updateId} autoFocus />
                     </FormGroup>
-                    <Button type="submit"  variant="contained" color="primary" className='{classes.submit}'>
+                    <Button type="submit" variant="contained" color="primary" className='{classes.submit}'>
                         Get User
                     </Button>
                 </Form>
+
+                <Table hover>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{this.props.user.userId}</td>
+                            <td>{this.props.user.username}</td>
+                            <td>{this.props.user.firstName}</td>
+                            <td>{this.props.user.lastName}</td>
+                            <td>{this.props.user.email}</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </div>
         )
     }
