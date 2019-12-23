@@ -47,7 +47,7 @@ export class LoginComponent extends React.Component<ILoginComponentProps, any>{
                     </FormGroup>
                     <Button color='info'>Submit</Button>
                 </Form>
-                {this.state.username}
+                {this.props.user.username}
             </div>
         )
     }

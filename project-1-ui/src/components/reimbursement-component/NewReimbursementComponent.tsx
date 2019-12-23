@@ -7,6 +7,7 @@ export class NewReimbursementComponent extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = {
+            reimbursementId: 0,
             author: 0,
             amount: 0,
             dateSubmitted: 0,
@@ -16,6 +17,13 @@ export class NewReimbursementComponent extends React.Component<any, any> {
             status: 0,
             type: 0
         }
+    }
+
+    updateReimbursementId = (e: any) => {
+        this.setState({
+            ...this.state,
+            reimbursementId: e.target.value
+        })
     }
 
     updateAuthor = (e: any) => {
@@ -77,8 +85,8 @@ export class NewReimbursementComponent extends React.Component<any, any> {
     submitReimbursement = async (e: SyntheticEvent) => {
         e.preventDefault()
         try {
-            let s = await fRemoteSubmitReimbursement(this.state.author, this.state.amount, this.state.dateSubmitted, this.state.dateResolved, this.state.description, this.state.resolver, this.state.status, this.state.type)
-            if (s.status === 201) {
+            let n = await fRemoteSubmitReimbursement(this.state.reimbursementId, this.state.author, this.state.amount, this.state.dateSubmitted, this.state.dateResolved, this.state.description, this.state.resolver, this.state.status, this.state.type)
+            if (n.status === 201) {
                 this.setState({
                     ...this.state,
                     sumbitted: 'Sumbitted successfully'
@@ -86,7 +94,7 @@ export class NewReimbursementComponent extends React.Component<any, any> {
             } else {
                 this.setState({
                     ...this.state,
-                    sumbitted: s.status
+                    sumbitted: n.status
                 })
             }
         } catch (e) {
@@ -98,8 +106,13 @@ export class NewReimbursementComponent extends React.Component<any, any> {
         return (
             <div>
                 <h2>Make a new Reimbursement</h2>
-                <br/>
-                <Form onSubmit={this.submitReimbursement} className="updateReimbursement" noValidate autoComplete="off">
+                <br />
+                <Form onSubmit={this.submitReimbursement} className="updateReimbursement">
+                    <FormGroup>
+                        <Label for="reimbursementId">Reimbursement ID</Label>
+                        <Input type="text" name="reimbursementId" id="reimbursementId" onChange={this.updateReimbursementId} />
+                    </FormGroup>
+
                     <FormGroup>
                         <Label for="author">Author</Label>
                         <Input type="text" name="author" id="author" onChange={this.updateAuthor} />
@@ -142,9 +155,7 @@ export class NewReimbursementComponent extends React.Component<any, any> {
 
 
                     <br />
-                    <Button type="submit" >
-                        Submit
-                </Button>
+                    <Button type="submit" > Submit </Button>
                 </Form>
             </div>
         )

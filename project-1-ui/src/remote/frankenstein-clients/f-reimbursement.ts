@@ -53,7 +53,7 @@ export async function fRemoteUpdateReimbursement(reimbursementId: number, author
         type,
     }
     try {
-        let response = await fUserClient.patch('/reimbursements', fields)
+        let response = await fUserClient.patch('/reimbursement', fields)
         if (response.status === 200) {
             return {
                 status: response.status,
@@ -71,10 +71,11 @@ export async function fRemoteUpdateReimbursement(reimbursementId: number, author
     }
 }
 
-export async function fRemoteSubmitReimbursement(author:number, amount:number, dateSubmitted:number, dateResolved:number, description:string, resolver:number, status: number, type:number) {
+export async function fRemoteSubmitReimbursement(reimbursementId: number, author:number, amount:number, dateSubmitted:number, dateResolved:number, description:string, resolver:number, status: number, type:number) {
     const fields = {
+        reimbursementId: 0,
         author: 0,
-        amount: amount,
+        amount: 0,
         dateSubmitted: 0,
         dateResolved: 0,
         description: '',
@@ -83,7 +84,7 @@ export async function fRemoteSubmitReimbursement(author:number, amount:number, d
         type: 0,
     }
     try {
-        let response = await fUserClient.post('/reimbursements', fields)
+        let response = await fUserClient.post('/reimbursement/', fields)
         if (response.status === 201) {
             return {
                 status: response.status,

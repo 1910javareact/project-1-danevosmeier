@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react'
-import { fRemoteSubmitReimbursement } from '../../remote/frankenstein-clients/f-reimbursement'
+import { fRemoteUpdateReimbursement } from '../../remote/frankenstein-clients/f-reimbursement'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import './../component.css'
 
@@ -7,6 +7,7 @@ export class ReimbursementUpdateComponent extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = {
+            reimbursementId: 0,
             author: 0,
             amount: 0,
             dateSubmitted: 0,
@@ -16,6 +17,13 @@ export class ReimbursementUpdateComponent extends React.Component<any, any> {
             status: 0,
             type: 0
         }
+    }
+
+    updateReimbursementId = (e: any) => {
+        this.setState({
+            ...this.state,
+            reimbursementId: e.target.value
+        })
     }
 
     updateAuthor = (e: any) => {
@@ -77,7 +85,7 @@ export class ReimbursementUpdateComponent extends React.Component<any, any> {
     submitReimbursement = async (e: SyntheticEvent) => {
         e.preventDefault()
         try {
-            let s = await fRemoteSubmitReimbursement(this.state.author, this.state.amount, this.state.dateSubmitted, this.state.dateResolved, this.state.description, this.state.resolver, this.state.status, this.state.type)
+            let s = await fRemoteUpdateReimbursement(this.state.reimbursementId, this.state.author, this.state.amount, this.state.dateSubmitted, this.state.dateResolved, this.state.description, this.state.resolver, this.state.status, this.state.type)
             if (s.status === 201) {
                 this.setState({
                     ...this.state,
@@ -99,6 +107,11 @@ export class ReimbursementUpdateComponent extends React.Component<any, any> {
             <div>
                 <h2>Update Reimbursement</h2>
                 <Form onSubmit={this.submitReimbursement} className="updateComponent">
+                    <FormGroup>
+                        <Label for="reimbursementId">Reimbursement Id</Label>
+                        <Input type="text" name="reimbursementId" id="reimbursementId" onChange={this.updateReimbursementId} />
+                    </FormGroup>
+
                     <FormGroup>
                         <Label for="author">Author</Label>
                         <Input type="text" name="author" id="author" onChange={this.updateAuthor} />
