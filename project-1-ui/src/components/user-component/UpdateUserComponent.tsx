@@ -107,7 +107,7 @@ export class UpdateUserComponent extends React.Component<any, any> {
                         <Input type="email" name="email" id="email" value={this.state.email} onChange={this.updateEmail} />
                     </FormGroup>
                     <br />
-                    <Button type="submit"  variant="contained" color="primary" >
+                    <Button color="info" type="submit"  variant="contained" >
                         Update
                     </Button>
                 </Form>

@@ -155,7 +155,7 @@ export class NewReimbursementComponent extends React.Component<any, any> {
 
 
                     <br />
-                    <Button type="submit" > Submit </Button>
+                    <Button outline color="success" type="submit" > Submit </Button>
                 </Form>
             </div>
         )
