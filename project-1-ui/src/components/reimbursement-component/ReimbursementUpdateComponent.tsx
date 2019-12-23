@@ -153,9 +153,7 @@ export class ReimbursementUpdateComponent extends React.Component<any, any> {
                     </FormGroup>
 
                     <br />
-                    <Button outline color="success" type="submit" >
-                        Submit
-                    </Button>
+                    <Button color="info" type="submit" >Submit`</Button>
                 </Form>
             </div>
         )
