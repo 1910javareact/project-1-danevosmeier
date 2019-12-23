@@ -3,6 +3,7 @@ import { User } from '../../models/user'
 import { UsersRowComponent } from './users-row/UsersRowComponent'
 import { getAllUsers } from '../../remote/frankenstein-clients/f-user'
 import { Table } from 'reactstrap'
+import './../component.css'
 
 interface IAllUsersState {
     allUsers: User[]

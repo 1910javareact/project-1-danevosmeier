@@ -1,6 +1,7 @@
 import React, { SyntheticEvent } from 'react'
 import { updateUser } from '../../remote/frankenstein-clients/f-user'
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap'
+import './../component.css'
 
 export class UpdateUserComponent extends React.Component<any, any> {
     constructor(props: any) {

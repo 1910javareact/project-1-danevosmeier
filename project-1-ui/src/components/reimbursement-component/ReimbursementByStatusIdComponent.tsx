@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react'
 import { Reimbursement } from '../../models/reimbursement'
 import { ReimbursementRowComponent } from './reimbursement-row/ReimbursementRowComponent'
 import { Form, Label, Input, FormGroup, Button, Table } from 'reactstrap'
+import './../component.css'
 
 interface IReimbursementByStatusIdComponentProps {
     reimbursement: Reimbursement[]

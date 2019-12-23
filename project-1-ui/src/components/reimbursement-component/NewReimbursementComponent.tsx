@@ -1,6 +1,7 @@
 import React, { SyntheticEvent } from 'react'
 import { fRemoteSubmitReimbursement } from '../../remote/frankenstein-clients/f-reimbursement'
 import { Form, Button, FormGroup, Label, Input } from 'reactstrap'
+import './../component.css'
 
 export class NewReimbursementComponent extends React.Component<any, any> {
     constructor(props: any) {

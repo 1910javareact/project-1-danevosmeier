@@ -1,6 +1,7 @@
 import React, { SyntheticEvent } from 'react'
 import { User } from '../../models/user'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import './../component.css'
 
 interface ILoginComponentProps {
     user: User

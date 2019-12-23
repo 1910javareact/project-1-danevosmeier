@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import './../component.css'
 
 const FNavBar = (props: any) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -11,7 +12,7 @@ const FNavBar = (props: any) => {
     <div>
       <Navbar color="faded" light>
         <NavItem>
-          <Link to='/'>Dr. Frankenstein ERS</Link>
+          <Link to='/'><h1>Frankenstein Neurology ERS</h1></Link>
         </NavItem>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
